@@ -2,14 +2,12 @@
 
 ### Pre-requisites
 
-Software Engineering is a science and it takes time to be cultivated!
-
-You should at-least have some experience with Ruby on Rails before reading this handbook!! 
+You should at-least have some experience with Ruby on Rails before reading this handbook!
 
 
 #### 1. Clone repository
 
-Check out!!
+Check out!
 
 ```
 https://github.com/Rails-is-Underrated
