@@ -21,25 +21,25 @@ Create a route. In `config/routes.rb`.
 ```
 
   Rails.application.routes.draw do
-    root 'landing#index'
+    root 'products#index'
   end
 
 ```
 
-In the snippet above, we are instructing Rails to set the root route (/) to index action in LandingController. So, the index action will be triggered when the user visits the root route.
+In the snippet above, we are instructing Rails to set the root route (/) to index action in ProductsController. So, the index action will be triggered when the user visits the root route.
 
 We will run the following command to create the controller:
 
 ```
-rails generate controller Landing index --skip-routes
+rails generate controller Products index --skip-routes
 ```
 
 We added the --skip-routes, meaning we have defined the routes and to skip.
 
-The generator will create files but the most important file is the controller file located in, app/controllers/landing_controller.rb
+The generator will create files but the most important file is the controller file located in, app/controllers/products_controller.rb
 
 ```
-  class LandingController < ApplicationController
+  class ProductsController < ApplicationController
     def index
     end
   end

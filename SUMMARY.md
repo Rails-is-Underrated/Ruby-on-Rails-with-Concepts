@@ -6,6 +6,7 @@
 
 * [Application Design](software_eng/application_design.md)
 * [Sinatra API Project](software_eng/sinatra_api_project.md)
+* [RESTful API](software_eng/what_is_rest.md)
 * [What is OOP](software_eng/what_is_oop.md)
 * [Ruby on Rails](software_eng/introduction_to_ruby_on_rails.md)
 
