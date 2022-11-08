@@ -1,12 +1,12 @@
 # What is Rails?
 
-Rails is a web application development framework written in the Ruby programming language, [more](https://guides.rubyonrails.org/getting_started.html#what-is-rails-questionmark).
+Rails is a web application development framework written in the Ruby programming language, [Rails docs](https://guides.rubyonrails.org/getting_started.html#what-is-rails-questionmark).
 
 ## MVC 
 
 Model View Controller is a design  pattern that divides related programming logic, making is easier to reason about. 
 
-Rails follow this design pattern, [more](https://www.sitepoint.com/model-view-controller-mvc-architecture-rails/).
+Rails follow this design pattern, [MVC](https://www.sitepoint.com/model-view-controller-mvc-architecture-rails/).
 
 ## Creating our Rails App
 

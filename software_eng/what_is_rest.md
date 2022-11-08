@@ -21,26 +21,38 @@ Server operations when a client sends an API request :
 
 In order for an API to be RESTful, it has to adhere to 6 constraints:
 
-**Uniform Interface** -> in order to obtain a uniform interface, multiple architectural constraints are needed to guide the behaviour of components.
+#### Uniform Interface
+
+In order to obtain a uniform interface, multiple architectural constraints are needed to guide the behaviour of components.
 
 - the request to the server has to include a resource identifier.
 - the response the server returns includes enough information so the client can modify the resource.
 - each request to the API contains all the information the server needs to perform the request and each response the server returns contains all the information the client needs in order to understand the response.
 - hypermedia as the engine of application state.
 
-**Client -server separation** -> client and server act independently, each on its own, and the interaction between them is only in the form of request, initiated by the client only and responses which the server sends to the client only as a reaction to a request.
+#### Client-server separation
+
+Client and server act independently, each on its own, and the interaction between them is only in the form of request, initiated by the client only and responses which the server sends to the client only as a reaction to a request.
 
 The server awaits a request from the client.
 
-**Stateless** -> means that the server does not remember anything about the user who uses the API.
+#### Stateless
 
-**Layered System** -> allows the system to be composed of hierarchical layers by constraining component behaviour such that each component cannot “see” beyond the immediate layer with which they are interacting.
+The server does not remember anything about the user who uses the API.
 
-**Cacheable** -> data in the server sends contain information whether is cacheable, it ut is it might contain some sort of a version number, the version number is what makes caching possible. 
+#### Layered System
+
+Allows the system to be composed of hierarchical layers by constraining component behaviour such that each component cannot “see” beyond the immediate layer with which they are interacting.
+
+#### Cacheable
+
+Data in the server sends contain information whether is cacheable, it might contain some sort of a version number, the version number is what makes caching possible. 
 
 The client knows which version of the data it already has, the client can avoid sending a new request, client should also know if the version number has expired in which the client should send another request to the server to get the post updated data about the state of the resource.
 
-**Code on demand** -> REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts. The simplifies clients by reducing the number of features required to be pre-implemented.
+#### Code on demand
+
+REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts. The simplifies clients by reducing the number of features required to be pre-implemented.
 
 
 See you in the next section 👉

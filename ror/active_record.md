@@ -26,13 +26,13 @@ Migrations are stored in the db/migrate directory, one for each migration class.
 
 Migrations will do more than just append timestamps, based on naming conventions and additional arguments it can also start fleshing out migrations.
 
-If the migration name is of the form “AddColumnToTable” or “RemoveColumnFromTable” and is followed by a list of column names and types then a migration containing the appropriate add_column and remove_column statement will be created.
+If the migration name is of the form *AddColumnToTable* or *RemoveColumnFromTable* and is followed by a list of column names and types then a migration containing the appropriate `add_column` and `remove_column` statement will be created.
 
-You can also add an index on the new column, that will generate an add_index statement.
+You can also add an *index* on the new column, that will generate an `add_index` statement.
 
-Generators also accept column type as references (available as belongs_to), this generates add_reference call, this migration adds a foreign_key and an appropriate index.
+Generators also accept column type as *references* (available as `belongs_to`), this generates `add_reference` call, this migration adds a *foreign_key* and an appropriate *index*.
 
-There is also a generator that produces JoinTables.
+There is also a generator that produces *JoinTables*.
 
 The `change` Method, this is the primary way of writing migrations, it works for the majority of the cases where Active Record knows how to reverse the migrations automatically.
 
@@ -48,7 +48,7 @@ The command above invokes `db:schema:dump` which updates `db/schema.rb` file to 
 
 Other useful commands;
 
-`Rails db:reset` -> this drops the database and sets it up again, equivalent to `rails db:drop` `db:setup`.
+`Rails db:reset`, drops the database and sets it up again, equivalent to `rails db:drop` `db:setup`.
 
 Editing existing migrations because of legitimate cases is not recommended, one is advised to write new migrations that perform the changes he/she requires.
 
@@ -66,7 +66,7 @@ Native database constraints validation is preferred for it truly enforces constr
 
 `ActiveModel::Errors` contains all errors, each error represented by an `ActiveModel::Error object`
 
-- errors[:attribute_name] is used to check error message of a specific attribute it returns an array of strings with all error message for a given attribute
+- `errors[:attribute_name]` is used to check error message of a specific attribute it returns an array of strings with all error message for a given attribute
 
 - displays an empty array if there are no errors related to the attribute.
 
@@ -80,7 +80,7 @@ Callbacks should be registered before being used. It is advised to declare callb
 
 **Relational callbacks** -> this is performed when related objects are changed.
 
-**Conditional callbacks** -> used to render conditional logic, this can be achieved in many ways. First is using :if and :unless option which can take aproc or an array.
+**Conditional callbacks** -> used to render conditional logic, this can be achieved in many ways. First is using `:if` and `:unless` option which can take [a proc](https://www.section.io/engineering-education/understanding-closures-in-ruby/) or an array.
 
 ### Associations
 
