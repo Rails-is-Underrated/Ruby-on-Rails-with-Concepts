@@ -22,7 +22,7 @@ JSON is language independent.
 `JSON.parse()` -> this is a javascript built in function to convert a string written in JSON format into native JavaScript objects.
 
 
-## Understanding JSOn web Tokens (JWT) 
+## Understanding JSON Web Tokens (JWT) 
 
 A JSON web Token(JWT) is a JSON object defined in RFC 7519 as a safe way to represent a set of information between two parties, [more](https://morioh.com/p/63009714b79a). 
 
@@ -54,7 +54,7 @@ The library has two methods, `JWT.encode` and `JWT.decode`.
 Open the `rails console`
 
 ```
-token = JWT.encode({message: 'Hello World'}, 'my_secret_key')
+token = JWT.encode({message: 'Rails is fun!!'}, 'my_secret_key')
 JWT.decode(token, 'my_secret_key')
 
 ```
@@ -85,70 +85,205 @@ class JsonWebToken
 end
 ```
 
-The method JsonWebToken.encode takes care of encoding the payload by adding an expiration date of 24 hours by default.
+The method `JsonWebToken.encode` takes care of `encoding` the **payload** by adding an *expiration date* of 24 hours by default.
 
 We also use the same encryption key as the one configured with Rails
 
-The method JsonWebToken.decode decodes the JWT token and gets the payload. 
+The method `JsonWebToken.decode` decodes the JWT token and gets the payload. 
 
-Then we use the HashWithIndifferentAccess class provided by Rails, which allows us to retrieve a value of a Hash with a Symbol or String.
+Then we use the `HashWithIndifferentAccess` class provided by Rails, which allows us to retrieve a value of a Hash with a Symbol or String.
 
-#### Token's Controller 
+#### Error Handling 
 
-We have, therefore, set up the system for generating a JWT token. 
+This class will handle our exceptions. 
 
-It’s now time to create a route that will generate this token. 
-
-The actions we will implement will be managed as RESTful services: the connection will be managed by a POST request to the create action.
-
-We will start by creating the controller of and method create in the namespace /API/v1. With Rails, one order is sufficient:
+Create a new file `lib/errors.rb`
 
 ```
-rails generate controller api::v1::tokens create
+class Errors < Hash
+  def add(key, value, _opts = {})
+    self[key] ||= []
+    self[key] << value
+    self[key].uniq!
+  end
 
-```
+  def add_multiple_errors(errors_hash)
+    errors_hash.each do |key, values|
+      values.each { |value| add key, value }
+    end
+  end
 
-Configure routes, 
-
-```
-Rails.application.routes.draw do
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      # ...
-      resources :tokens, only: [:create]
+  def each
+    each_key do |field|
+      self[field].each { |message| yield field, message }
     end
   end
 end
 ```
 
-##### Create JWT token logic. 
+#### Authenticate User 
+
+Let's create a class that will authenticate our users with valid email and password. 
+
+`mkdir app/services`
+
+`touch app/services/authenticate_user.rb`
 
 ```
-# app/controllers/api/v1/tokens_controller.rb
+class AuthenticateUser < ApplicationService
+  def initialize(email, password)
+    @email = email
+    @password = password
+  end
+  
+  private 
+  
+  attr_accessor :email, :password
 
-class Api::V1::TokensController < ApplicationController
-  def create
-    @user = User.find_by_email(user_params[:email])
-    if @user&.authenticate(user_params[:password])
-      render json: {
-        token: JsonWebToken.encode(user_id: @user.id),
-        email: @user.email
-      }
-    else
-      head :unauthorized
+  def call
+    # create token with user_id
+    JsonWebToken.encode(user_id: user.id) if user
+  end
+
+  def user
+    user = User.find_by(email: email)
+    return user if user&.authenticate(password)
+    errors.add :user_authentication, 'invalid credentials'
+  end
+end
+```
+
+We are inheriting from `ApplicationService` class, let's set it up
+
+`touch app/services/application_service.rb`
+
+```
+class ApplicationService
+  
+  # def self.call(*arg)
+  class << self
+    def call(*arg)
+      new(*arg).constructor
     end
+  end
+  
+  attr_reader :result
+  def constructor
+    # AuthenticateUser#call
+    @result = call
+    self
+  end
+
+  def success?
+    !failure?
+  end
+
+  def failure?
+    errors.any?
+  end
+
+  def errors
+    @errors ||= Errors.new
+  end
+
+  def call
+    fail NotImplementedError unless defined?(super)
+  end
+end
+```
+
+Now that we have our authenticate user logic in place let's authorize our request. 
+
+#### Authorize API request
+
+We are going to authorize all request that comes into our app.  
+
+`touch app/services/authorize_api_request.rb`
+
+```
+class AuthorizeApiRequest < ApplicationService
+  attr_reader :headers
+
+  def initialize(headers = {})
+    @headers = headers
+  end
+
+  def call
+    user
   end
 
   private
 
-  # Only allow a trusted parameter "white list" through.
-  def user_params
-    params.require(:user).permit(:email, :password)
+  def user
+    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user || errors.add(:token, 'invalid token') && nil
+  end
+
+  def decoded_auth_token
+    # decodes a valid token 
+    @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+  end
+
+  def http_auth_header
+    if headers['Authorization'].present?
+      return headers['Authorization'].split(' ').last
+    else
+      errors.add(:token, 'missing token')
+    end
+    nil
   end
 end
 ```
 
-More on this please visit [Guide](https://github.com/Njunu-sk/api_on_rails/blob/master/rails6/en/chapter04-authentication.adoc) and [this](https://www.digitalocean.com/community/tutorials/build-a-restful-json-api-with-rails-5-part-two).
+We are checking our headers, making sure it has a valid `token`, if true it returns a `user` object.
+
+#### Set up token Controller
+
+Let's create a file `touch app/controllers/sessions_controller.rb`
+
+```
+class SessionsController < ApplicationController
+
+  skip_before_action :authenticate_request
+
+  def create
+    auth = AuthenticateUser.call(params[:email], params[:password])
+    if auth.success?
+      render json: { auth_token: auth.result }
+    else
+      render json: { errors: auth.errors }, status: :unauthorized
+    end
+  end
+end
+```
+
+Add a route, in `routes.rb` 
+
+```
+post 'authenticate', to: 'sessions#create'
+```
+
+Set up the `application_controller`, 
+
+```
+class ApplicationController < ActionController::API
+  before_action :authenticate_request
+  attr_reader :current_user
+
+  private
+
+  # authenticate all requests
+  def authenticate_request
+    auth = AuthorizeApiRequest.call(request.headers)
+    @current_user = auth.result
+    render json: { errors: auth.errors }, status: :unauthorized unless @current_user
+  end
+end
+```
+
+Checkout this [branch](https://github.com/Rails-is-Underrated/Duka/pull/3/files).
+
+More on this please visit [Rails 6 API](https://github.com/Njunu-sk/api_on_rails/blob/master/rails6/en/chapter04-authentication.adoc) and [Todos API](https://www.digitalocean.com/community/tutorials/build-a-restful-json-api-with-rails-5-part-two).
 
 
 See you in the next section 👉

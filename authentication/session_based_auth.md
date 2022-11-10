@@ -172,6 +172,8 @@ class ProductsController < ApplicationController
   before_action :logged_in_user
 ```
 
+Check out this [branch](https://github.com/Rails-is-Underrated/Duka/pull/2/files).
+
 This are the core components in a `session based authentication`, you can check out [How to set up authentication form scratch](https://www.section.io/engineering-education/how-to-setup-user-authentication-from-scratch-with-rails-6/) or [Session Based Authentication](https://hackernoon.com/building-a-simple-session-based-authentication-using-ruby-on-rails-9tah3y4j) blogs.
 
 
