@@ -18,7 +18,7 @@ Navigate to the newly created `duka` folder. In the app folder, Rails maintains 
 
 Create a route. In `config/routes.rb`. 
 
-```
+```ruby
 
   Rails.application.routes.draw do
     root 'products#index'
@@ -38,7 +38,7 @@ We added the --skip-routes, meaning we have defined the routes and to skip.
 
 The generator will create files but the most important file is the controller file located in, app/controllers/products_controller.rb
 
-```
+```ruby
   class ProductsController < ApplicationController
     def index
     end
@@ -49,16 +49,18 @@ This generator also creates a file in app/views/landing/ named index.html.erb. B
 
 Replace the view content with:
 
-```
+```ruby
 <h1>E-commerce App</h1>
 ```
 
-Let’s test our app by running:
+Let’s start our server:
 
 ```
 rails s
 ```
 
-We'll see our newly created application,
+We'll see our newly created application. 
+
+***
 
 See you in the next section 👉,

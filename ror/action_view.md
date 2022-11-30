@@ -8,7 +8,7 @@ Controllers makes model data available to the view and this data can be **displa
 
 In the, `index.html.erb`, paste the content below, 
 
-```
+```ruby
 <h1>E commerce App</h1>
 
 
@@ -20,5 +20,7 @@ In the, `index.html.erb`, paste the content below,
 ```
 
 You'll see your product listed below.
+
+***
 
 See you in the next section 👉

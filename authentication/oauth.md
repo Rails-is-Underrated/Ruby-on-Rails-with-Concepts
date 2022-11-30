@@ -23,7 +23,7 @@ Overview of what happens when a user visits an app and tries to authenticate via
 
 Go to the [application_settings](https://manage.auth0.com/#/applications) and check out your application details. 
 
-![](/images/app_details.png)
+![](/images/app_details.jpeg)
 
 You need your apps **domain**, **Client_id**, **Client Secret**.
 
@@ -44,7 +44,7 @@ Thi is a URL in the application that Auth0 can return to after the user has been
 
 Add to your `Gemfile`: 
 
-```
+```ruby
 gem 'omniauth-auth0', '~> 3.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0' # prevents forged authentication requests
 ```
@@ -55,7 +55,7 @@ Then `bundle install`.
 
 Create an file in the root directory `touch auth0.yml`:
 
-```
+```ruby
 development:
   auth0_client_id: <%= ENV["AUTH0_CLIENT_ID"] %>
   auth0_client_secret: <%= ENV["AUTH0_CLIENT_SECRET"] %>
@@ -75,7 +75,7 @@ production:
 
 Add the `dotenv` gem and a new `.env` file in the root directory 
 
-```
+```ruby
 gem 'dotenv', '~> 2.8', '>= 2.8.1'
 ```
 
@@ -83,7 +83,7 @@ Run `bundle install`.
 
 Add configuration in `touch config/initializers/auth0.rb`: 
 
-```
+```ruby
 Rails.application.config.auth0 = Rails.application.config_for(:auth0)
 
 Rails.application.config.middleware.use OmniAuth::Builder do
@@ -107,7 +107,7 @@ This controller will handle the authentication callback:
 
 Create a file `touch app/controllers/sessions_controller.rb`
 
-```
+```ruby
 # ./app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
 
@@ -129,7 +129,7 @@ end
 
 Add the followring routes in `routes.rb`
 
-```
+```ruby
 # ./config/routes.rb
 Rails.application.routes.draw do
   # ..
@@ -146,7 +146,7 @@ end
 
 To redirect users to Auth0 for authentication, redirect users to `/auth/auth0` endpoint in your app.
 
-```
+```ruby
 <%= button_to 'Login', '/auth/auth0', method: :post, data: {turbo: "false"} %>
 ```
 
@@ -155,8 +155,10 @@ Click the Log In Button,
 ![](/images/auth.png)
 
 
-To be continued...
 
 We have successfuly set up `OAuth` Authentication with Google. 
+
+
+***
 
 See you in the next section 👉

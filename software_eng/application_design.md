@@ -1,6 +1,6 @@
 # Introduction.
 
-Duka is an E-commerce Application, it provide an interface for buyers and sellers.
+Duka is an E-commerce Application, it provides an interface for buyers and sellers.
 
 ## Objectives.
 
@@ -18,8 +18,7 @@ Make it easier for sellers to sell and monitor their products.
 - Complete purchases.
 
 
-### Non-functional
-- Portability (Mobile first).
+### Non-functional.
 - Security.
 - Intuitive (Easy to use).
 
@@ -46,6 +45,8 @@ Overview of our model structure, this might change in the future.
 ![](/images/data.png)
 
 Now that we have everything in place, let's explore some fundamentals of building a web app, 
+
+***
 
 See you in the next section 👉
 

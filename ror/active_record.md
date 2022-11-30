@@ -112,9 +112,11 @@ Let's try out our newly created model
 
 `rails console`
 
-```
+```ruby
 Product.create!(name: "E-book", amount_cents: 2000)
 
 ```
+
+***
 
 See you in the next section 👉

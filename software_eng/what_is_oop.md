@@ -36,5 +36,7 @@ You create objects by calling a constructor, a special method associated with a 
 
 The standard contructor is called new(), you invoke methods by sending a message to an object.
 
+***
 
-See you in the next section 👉
+
+See you in the next section 👉,

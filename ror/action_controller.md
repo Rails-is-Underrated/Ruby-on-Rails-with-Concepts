@@ -8,7 +8,7 @@ It makes the model data available to the view, so it can display that data to th
 
 Let’s add an `index` action in our `products_controller`, to fetch the newly created `product`.
 
-```
+```ruby
 def index 
   @products = Product.all
 end
@@ -19,6 +19,8 @@ In the code above, if a **seller** goes to `/` in your application, Rails will c
 Rails will render the `index.html.erb` view .
 
 By **fetching** all products, the `index` method can make a `@products` instance variable accessible in the **view**.
+
+***
 
 See you in the next section 👉
 

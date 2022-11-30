@@ -63,14 +63,14 @@ We are going to set up a session controller,
 
 Let's add the following routes: 
 
-```
+```ruby
 # config/routes.rb 
 get '/login', to 'sessions#new'
 post '/login', to: 'sessions#create'
 delete '/logout', to: 'sessions#destroy'
 ```
 
-```
+```ruby
 class SessionsController < ApplicationController
 
   def new 
@@ -102,7 +102,7 @@ end
 
 Let's add a `helper_method`, `session_helper.rb`
 
-```
+```ruby
 module SessionsHelper 
 
  # accepts user and creates a session for the user.
@@ -145,7 +145,7 @@ end
 
 This `session helper` will be imported in the application controller. Making the methods available to all controllers. 
 
-```
+```ruby
 class ApplicationController <  ActionController::Base
 
   include SessionsHelper
@@ -164,7 +164,7 @@ end
 
 We need to add a `before_action` filter in our controller to restrict our users, 
 
-```
+```ruby
 # products_controller.rb 
 
 class ProductsController < ApplicationController 
@@ -176,6 +176,7 @@ Check out this [branch](https://github.com/Rails-is-Underrated/Duka/pull/2/files
 
 This are the core components in a `session based authentication`, you can check out [How to set up authentication form scratch](https://www.section.io/engineering-education/how-to-setup-user-authentication-from-scratch-with-rails-6/) or [Session Based Authentication](https://hackernoon.com/building-a-simple-session-based-authentication-using-ruby-on-rails-9tah3y4j) blogs.
 
+***
 
 See you in the next section 👉
 

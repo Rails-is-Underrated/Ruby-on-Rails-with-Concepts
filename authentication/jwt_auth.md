@@ -53,7 +53,7 @@ The library has two methods, `JWT.encode` and `JWT.decode`.
 
 Open the `rails console`
 
-```
+```ruby
 token = JWT.encode({message: 'Rails is fun!!'}, 'my_secret_key')
 JWT.decode(token, 'my_secret_key')
 
@@ -65,7 +65,7 @@ The second line decodes the token, and we see that we find our payload well.
 
 Let's add a `json_web_token.rb` file in our `lib` directory.
 
-```
+```ruby
 class JsonWebToken 
   # secret to encode and decode token
   HMAC_SECRET = Rails.application.secrets.secret_key_base
@@ -99,7 +99,7 @@ This class will handle our exceptions.
 
 Create a new file `lib/errors.rb`
 
-```
+```ruby
 class Errors < Hash
   def add(key, value, _opts = {})
     self[key] ||= []
@@ -129,7 +129,7 @@ Let's create a class that will authenticate our users with valid email and passw
 
 `touch app/services/authenticate_user.rb`
 
-```
+```ruby
 class AuthenticateUser < ApplicationService
   def initialize(email, password)
     @email = email
@@ -157,7 +157,7 @@ We are inheriting from `ApplicationService` class, let's set it up
 
 `touch app/services/application_service.rb`
 
-```
+```ruby
 class ApplicationService
   
   # def self.call(*arg)
@@ -200,7 +200,7 @@ We are going to authorize all request that comes into our app.
 
 `touch app/services/authorize_api_request.rb`
 
-```
+```ruby
 class AuthorizeApiRequest < ApplicationService
   attr_reader :headers
 
@@ -241,7 +241,7 @@ We are checking our headers, making sure it has a valid `token`, if true it retu
 
 Let's create a file `touch app/controllers/sessions_controller.rb`
 
-```
+```ruby
 class SessionsController < ApplicationController
 
   skip_before_action :authenticate_request
@@ -259,13 +259,13 @@ end
 
 Add a route, in `routes.rb` 
 
-```
+```ruby
 post 'authenticate', to: 'sessions#create'
 ```
 
 Set up the `application_controller`, 
 
-```
+```ruby
 class ApplicationController < ActionController::API
   before_action :authenticate_request
   attr_reader :current_user
@@ -284,6 +284,9 @@ end
 Checkout this [branch](https://github.com/Rails-is-Underrated/Duka/pull/3/files).
 
 More on this please visit [Rails 6 API](https://github.com/Njunu-sk/api_on_rails/blob/master/rails6/en/chapter04-authentication.adoc) and [Todos API](https://www.digitalocean.com/community/tutorials/build-a-restful-json-api-with-rails-5-part-two).
+
+
+***
 
 
 See you in the next section 👉

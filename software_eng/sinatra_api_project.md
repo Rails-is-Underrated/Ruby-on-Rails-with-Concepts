@@ -22,7 +22,7 @@ To follow along, it is helpful to have the following
 
 Above all, let's have fun!
 
-### Let the games begin. 
+### Sinatra API. 
 
 I assume that you have your editor configured, create a directory and name it `product_api`
 
@@ -36,7 +36,7 @@ In our directory, `bundle init` in your terminal, this will create a Gemfile.
 
 **Add this [gems](https://rubygems.org/)** to your Gemfile.
 
-```
+```ruby
 
 gem "sinatra", "~> 3.0"
 gem "http", "~> 5.1"
@@ -59,7 +59,7 @@ run  `bundle install`
 
 Copy and paste the above
 
-```
+```ruby
 require 'bundler'
 require 'rack'
 require 'rack/contrib'
@@ -84,7 +84,7 @@ Create a file in the `root` directory,
 
 And copy the above 
 
-```
+```ruby
 require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 # require './product'
@@ -109,7 +109,7 @@ touch database.yml
 
 Copy and paste the code above, 
 
-```
+```ruby
 development:
   adapter: postgresql
   encoding: unicode
@@ -139,7 +139,7 @@ Our `model` folder is going to have a simple ruby class, create a file `touch pr
 
 Copy this ruby script: 
 
-```
+```ruby
 class Product < ActiveRecord::Base 
 
 end
@@ -157,7 +157,7 @@ Run the above command,
 
 In the newly generated file modify it to,
 
-```
+```ruby
 class CreateProducts < ActiveRecord::Migration[7.0]
   def change
     create_table :products do |t|
@@ -180,7 +180,7 @@ Create a new file in `root` directory `touch product.rb`, and copy the above con
 
 Please read the comments above: 
 
-```
+```ruby
 require 'sinatra/base' 
 require 'json'     
 require 'sinatra/activerecord'
@@ -287,8 +287,10 @@ Yeey!! 💪.
 Make sure you include the body fields in `POST` and `PUT` request. 
 
 
-Nice work!, 
+Nice work!
 
-See you in the next section 👉
+***
+
+See you in the next section 👉,
 
 

@@ -1,4 +1,4 @@
-# Rails is Underrated
+# Learn Ruby on Rails with Concepts.
 
 ### Pre-requisites
 
@@ -7,10 +7,10 @@ You should at-least have some experience with Ruby on Rails before reading this 
 
 #### 1. Clone repository
 
-Check out!
+Repo:
 
 ```
-https://github.com/Rails-is-Underrated
+https://github.com
 
 ```
 
@@ -39,3 +39,11 @@ Based on a google form results
 
 ![](/images/form.png)
 
+
+#### 4. App
+
+An E-commerce App.
+
+<video width="720" height="600" controls>
+  <source src="/images/duka.mp4" type="video/mp4">
+</video>

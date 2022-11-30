@@ -17,7 +17,7 @@
 * [Action View](ror/action_view.md)
 
 
-### Authentication 
+## Authentication 
 
 * [Session Based Authentication](authentication/session_based_auth.md)
 * [JWT Authentication](authentication/jwt_auth.md)
@@ -25,10 +25,10 @@
 * [Security](authentication/rails_security.md)
 
 
-### Authorisation
+## Authorization
   
-* [Design Roles From Scratch](authorisation/roles_from_scratch.md)
-* [Separation of roles with Nested Controllers](authorisation/nested_controllers.md)
+* [Separation of roles with Nested Controllers](authorization/nested_controllers.md)
+* [Design Roles From Scratch](authorization/roles_from_scratch.md)
 
 
 ## Rails API 

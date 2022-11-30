@@ -12,7 +12,8 @@ This is solved with the `reset_session`, this issues a new session identifier an
 
 This is demonstrated in the `Authentication` module: login and logout methods both have `reset_session`.
 
-```
+
+```ruby
 # concerns/authentication.rb
 
   def login user
@@ -38,7 +39,7 @@ This is given in Rails with the `has_secure_password`, which supports secure pas
 
 This is included in our `User` model along side `bcrypt gem`.
 
-```
+```ruby
 # models/user.rb 
 
 class user < ApplicationRecord 
@@ -54,7 +55,7 @@ Accounts on the trial and error attack on the login page
 
 The best solution to this is to display a generic error message or require to enter a CAPTCHA
 
-```
+```ruby
 # controller/sessions_controller.rb 
 
 def create 
@@ -76,7 +77,7 @@ This makes it more difficult for the attackers.
 
 Require user to enter a password when changing an email
 
-```
+```ruby
 # controllers/users_controller.rb 
 
 def update 
@@ -88,5 +89,7 @@ end
 ```
 
 This is just but a few security measures while authenticating a Rails app. 
+
+***
 
 See you in the next section 👉
