@@ -1,5 +1,12 @@
 # Rails Security 
 
+Security revolves around three main concepts, 
+ - Authentication
+ - Authorization
+ - Encryption
+
+We are going to focus on `authentication` in this section.
+
 In this guide we'll look into Rails vulnerabilities and how we ca go about it. 
 
 Please clone [Rails Authentication from Scratch](https://github.com/Njunu-sk/rails-authentication-from-scratch) to follow along, 

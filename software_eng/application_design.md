@@ -1,18 +1,18 @@
 # Introduction.
 
-Duka is an E-commerce Application, it provides an interface for buyers and sellers.
+Duka is an E-commerce Application, it provides an interface for customers and vendors.
 
 ## Objectives.
 
-Make it easier for buyers to shop for products.
+Customers are able to shop online.
 
-Make it easier for sellers to sell and monitor their products.
+Vendors are able to sell online.
 
 
 ## Requirements.
 
 ### Functional
-- Account creation for buyers and sellers 
+- Account creation for customers and vendors.
 - Product creation.
 - Managing orders.
 - Complete purchases.
@@ -25,7 +25,7 @@ Make it easier for sellers to sell and monitor their products.
 
 ## User Stories
 
-| sellers                    | buyers                                    |
+| vendor                     | customer                                  |
 |----------------------------|-------------------------------------------|
 | Create products to sell    | Browse on product to buy                  |
 | Determine status of orders | Select product to purchase                |

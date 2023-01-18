@@ -22,7 +22,7 @@ Migrations are scripts that tell rails how you want to set up or change a databa
 
 #### Stand alone migrations.
 
-Migrations are stored in the db/migrate directory, one for each migration class. 
+Migrations are stored in the `db/migrate` directory, one for each migration class. 
 
 Migrations will do more than just append timestamps, based on naming conventions and additional arguments it can also start fleshing out migrations.
 
@@ -34,7 +34,7 @@ Generators also accept column type as *references* (available as `belongs_to`), 
 
 There is also a generator that produces *JoinTables*.
 
-The `change` Method, this is the primary way of writing migrations, it works for the majority of the cases where Active Record knows how to reverse the migrations automatically.
+The *change* Method, this is the primary way of writing migrations, it works for the majority of the cases where Active Record knows how to reverse the migrations automatically.
 
 Migrations are usually reversible, this helps in case of errors . `rails db:rollback`, rolls back the last series of migrations.
 
@@ -46,7 +46,7 @@ Rails `db:migrate` will run the change or up methods for all migrations that hav
 
 The command above invokes `db:schema:dump` which updates `db/schema.rb` file to match the database structure.
 
-Other useful commands;
+#### Other useful commands;
 
 `Rails db:reset`, drops the database and sets it up again, equivalent to `rails db:drop` `db:setup`.
 
@@ -86,7 +86,7 @@ Callbacks should be registered before being used. It is advised to declare callb
 
 An association is a connection between two Active Record objects, making common operations simpler and easier in the code.
 
-Choosing between belongs_to and has_one: foreign key goes on the table of the class declaring the belongs_to association.
+- Choosing between belongs_to and has_one: foreign key goes on the table of the class declaring the belongs_to association.
 
 - belongs_to sets up a 1:1 connection with another model and has_one only contains one instance of another model.
 

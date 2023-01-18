@@ -144,20 +144,21 @@ end
 
 #### Add Logging in 
 
-To redirect users to Auth0 for authentication, redirect users to `/auth/auth0` endpoint in your app.
+To redirect users to Auth0 for authentication, we will have to follow the `/auth/auth0` endpoint in your app.
 
 ```ruby
 <%= button_to 'Login', '/auth/auth0', method: :post, data: {turbo: "false"} %>
 ```
 
-Click the Log In Button, 
+Click the Log In Button, a google login form will pop up as above.
 
 ![](/images/auth.png)
 
 
 
-We have successfuly set up `OAuth` Authentication with Google. 
+We have successfuly logged in a user with `Google OAuth`.
 
+Check out [this branch](https://github.com/Rails-is-Underrated/Duka/pull/4/files) for it's full implimentation.
 
 ***
 

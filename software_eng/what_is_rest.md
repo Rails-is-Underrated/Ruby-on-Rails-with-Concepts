@@ -52,7 +52,9 @@ The client knows which version of the data it already has, the client can avoid 
 
 #### Code on demand
 
-REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts. The simplifies clients by reducing the number of features required to be pre-implemented.
+REST allows client functionality to be extended by downloading and executing code in the form of applets or scripts. 
+
+These simplifies clients by reducing the number of features required to be pre-implemented.
 
 
 ***

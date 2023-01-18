@@ -61,7 +61,7 @@ JWT.decode(token, 'my_secret_key')
 
 In the first line, we encoded a payload with the secret key my_secret_key. So we get a token we can simply decode. 
 
-The second line decodes the token, and we see that we find our payload well. 
+The second line decodes the token, and we see that we find our payload. 
 
 Let's add a `json_web_token.rb` file in our `lib` directory.
 

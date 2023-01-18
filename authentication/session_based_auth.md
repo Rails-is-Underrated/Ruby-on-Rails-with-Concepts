@@ -90,7 +90,7 @@ class SessionsController < ApplicationController
     end  
   end
 
-  # remove session
+  # delete session
 
   def destroy 
     log_out
@@ -128,14 +128,10 @@ module SessionsHelper
   end
 
   def current_user?(user)
-  user == current_user 
+    user == current_user 
   end
 
  # redirect non logged in user to the first visited url after loggin in. 
-  def redirect_back_or(default)
-    redirect_to(session[:forwarding_url] || default)
-    session.delete(:forwarding_url)
-  end
 
   def store_location 
     session[:forwarding_url] = request.original_url if request.get?

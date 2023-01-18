@@ -4,7 +4,7 @@ You would probably want to set up an admin section in your application.
 
 Let's set up nested controllers. 
 
-Admin user should create a *shop* add *products* and it's *category*. 
+Vendors should create a *shop* add *products* and it's *category*. 
 
 In our `app/routes.rb` add the resources above 
 

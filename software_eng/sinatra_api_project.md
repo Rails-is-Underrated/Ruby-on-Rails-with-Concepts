@@ -2,11 +2,11 @@
 
 Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort.
 
-Check out their [docs](https://sinatrarb.com/)
+Check out their [documentation](https://sinatrarb.com/).
 
 We are going to create a simple app that will perform `CRUD` operations on our product resource.
 
-## Product Application 
+## Product API  Application 
 
 ### Prerequisites
 
@@ -24,7 +24,7 @@ Above all, let's have fun!
 
 ### Sinatra API. 
 
-I assume that you have your editor configured, create a directory and name it `product_api`
+I assume that you have your editor configured, create a directory and name it `product_api`.
 
 `
 mkdir product_api  
@@ -104,10 +104,10 @@ cd config
 `
 
 `
-touch database.yml 
+touch config/database.yml 
 `
 
-Copy and paste the code above, 
+Copy and paste the above code, 
 
 ```ruby
 development:
@@ -174,7 +174,7 @@ Then run,
 
 `rake db:migrate`
 
-**Set up a controller**
+**Set up the controller**
 
 Create a new file in `root` directory `touch product.rb`, and copy the above content. 
 
