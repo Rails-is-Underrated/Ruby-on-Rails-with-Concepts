@@ -30,17 +30,9 @@
 * [Separation of roles with Nested Controllers](authorization/nested_controllers.md)
 * [Design Roles From Scratch](authorization/roles_from_scratch.md)
 
-
-## Rails API 
-
-* [API only Rails Application](api_only/rails_api.md)
-* [Best Practices for API Design](api_only/best_api_only_practices.md)
-
-
 ## Rails Mailers 
 
 * [Action Mailer](mailers/action_mailer.md)
-* [Action Mailbox](mailers/action_mailbox.md)
 
 ## External API 
 
