@@ -39,11 +39,3 @@ Based on a google form results
 
 ![](/images/form.png)
 
-
-#### 4. App
-
-An E-commerce App.
-
-<video width="720" height="600" controls>
-  <source src="/images/duka.mp4" type="video/mp4">
-</video>
